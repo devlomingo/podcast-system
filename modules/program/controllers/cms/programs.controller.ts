@@ -1,11 +1,13 @@
 import { Controller, Get, Post, Put, Delete, Param, Body } from '@nestjs/common';
+import { ProgramService } from '@modules/program/services/program.service';
 
 @Controller('programs')
 export class ProgramsController {
+  constructor(private readonly programService: ProgramService) {}
+
   @Get()
   findAll() {
-    console.log('findAll called');
-    return 'findAll endpoint';
+    return this.programService.findAll();
   }
 
   @Get(':id')

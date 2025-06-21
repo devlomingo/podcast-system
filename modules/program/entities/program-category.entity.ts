@@ -5,8 +5,8 @@ import {
   JoinColumn,
   CreateDateColumn
 } from 'typeorm';
-import { Program } from './program.entity';
-import { Category } from './category.entity';
+import { Program } from '@modules/program/entities/program.entity';
+import { Category } from '@modules/program/entities/category.entity';
 
 @Entity('program_categories')
 export class ProgramCategory {

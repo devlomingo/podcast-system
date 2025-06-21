@@ -1,19 +1,16 @@
-import { EntityRepository } from 'typeorm';
+import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { Program } from '@modules/program/entities/program.entity';
-import { DataSource, Repository } from 'typeorm';
 
-export class ProgramRepository extends Repository<Program> {
-  constructor(dataSource: DataSource) {
-    super(Program, dataSource.createEntityManager());
-  }
+@Injectable()
+export class ProgramService {
+  constructor(
+    @InjectRepository(Program)
+    private readonly programRepository: Repository<Program>,
+  ) {}
 
-  async findActiveById(id: number): Promise<Program | null> {
-    return this.findOne({
-      where: { id, deleted_at: null },
-    });
-  }
-
-  async findAllActive(): Promise<Program[]> {
-    return this.find({ where: { deleted_at: null } });
+  findAll(): Promise<Program[]> {
+    return this.programRepository.find();
   }
 }

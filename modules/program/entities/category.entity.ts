@@ -5,7 +5,7 @@ import {
   DeleteDateColumn,
   OneToMany
 } from 'typeorm';
-import { ProgramCategory } from './program-category.entity';
+import { ProgramCategory } from '@modules/program/entities/program-category.entity';
 
 @Entity('categories')
 export class Category {

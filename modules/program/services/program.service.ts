@@ -1,47 +1,33 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Program } from '../entities/program.entity';
-import { CreateProgramDto } from '@modules/program/dtos/create-program.dto';
-import { UpdateProgramDto } from '@modules/program/dtos/update-program.dto';
+import { Program } from '@modules/program/entities/program.entity';
 
 @Injectable()
-export class ProgramsService {
+export class ProgramService {
   constructor(
     @InjectRepository(Program)
-    private readonly programRepo: Repository<Program>,
+    private readonly programRepository: Repository<Program>,
   ) {}
 
-  async findAll(): Promise<Program[]> {
-    return this.programRepo.find({
-      where: { deleted_at: null },
-      order: { created_at: 'DESC' },
-    });
+  findAll() {
+    return this.programRepository.find();
   }
 
-  async findOne(id: number): Promise<Program> {
-    const program = await this.programRepo.findOne({
-      where: { id, deleted_at: null },
-    });
-    if (!program) {
-      throw new NotFoundException(`Program with id ${id} not found`);
-    }
-    return program;
+  findOne(id: number) {
+    return this.programRepository.findOneBy({ id });
   }
 
-  async create(data: CreateProgramDto): Promise<Program> {
-    const program = this.programRepo.create(data);
-    return this.programRepo.save(program);
+  create(data: Partial<Program>) {
+    const entity = this.programRepository.create(data);
+    return this.programRepository.save(entity);
   }
 
-  async update(id: number, data: UpdateProgramDto): Promise<Program> {
-    const program = await this.findOne(id);
-    const updated = this.programRepo.merge(program, data);
-    return this.programRepo.save(updated);
+  update(id: number, data: Partial<Program>) {
+    return this.programRepository.update(id, data);
   }
 
-  async remove(id: number): Promise<void> {
-    const program = await this.findOne(id);
-    await this.programRepo.softRemove(program);
+  remove(id: number) {
+    return this.programRepository.delete(id);
   }
 }

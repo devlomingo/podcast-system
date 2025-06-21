@@ -8,7 +8,7 @@ import {
   OneToMany,
 } from 'typeorm';
 import { ProgramType } from '@modules/program/enums/program-type.enum';
-import { ProgramCategory } from './program-category.entity';
+import { ProgramCategory } from '@modules/program/entities/program-category.entity';
 
 @Entity('programs')
 export class Program {
