@@ -9,7 +9,7 @@ module.exports = {
     extensions: ['.ts', '.js'],
     alias: {
       '@modules': join(__dirname, '..', '..', 'modules'),
-      '@core': join(__dirname, '..', '..', 'modules'),
+      '@core': join(__dirname, '..', '..', 'libs', 'core'),
     },
   },
   plugins: [

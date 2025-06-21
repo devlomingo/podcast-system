@@ -2,7 +2,7 @@ import { Controller, Get, Post, Put, Delete, Param, Body } from '@nestjs/common'
 import { ProgramService } from '@modules/program/services/program.service';
 import { Program } from '@modules/program/entities/program.entity';
 import { ProgramPresenter } from '@modules/program/presenters/program.presenter';
-import { ResponsePresenter } from '@modules/core/libs/core/presenters/response.presenter';
+import { ResponsePresenter } from '@core/presenters/response.presenter';
 
 @Controller('programs')
 export class ProgramsController {
