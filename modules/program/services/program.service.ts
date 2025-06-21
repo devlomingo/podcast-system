@@ -14,13 +14,13 @@ export class ProgramService {
     return this.programRepository.find();
   }
 
-  findOne(id: number) {
+  findOne(id: number): Promise<Program> {
     return this.programRepository.findOneBy({ id });
   }
 
-  create(data: Partial<Program>) {
-    const entity = this.programRepository.create(data);
-    return this.programRepository.save(entity);
+  create(data: Partial<Program>): Promise<Program> {
+    const program = this.programRepository.create(data);
+    return this.programRepository.save(program);
   }
 
   update(id: number, data: Partial<Program>) {

@@ -4,13 +4,7 @@
   "files": [],
   "references": [
     {
-      "path": "./apps/cms-e2e"
-    },
-    {
       "path": "./apps/cms"
-    },
-    {
-      "path": "./apps/discovery-e2e"
     },
     {
       "path": "./apps/discovery"

@@ -12,7 +12,7 @@
     "target": "es2021",
     "baseUrl": ".",
     "paths": {
-      "@libs/*":    ["libs/*"],
+      "@core/*":    ["libs/core/*"],
       "@modules/*": ["modules/*"]
     }
   },
