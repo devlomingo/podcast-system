@@ -2,15 +2,21 @@
   "name": "@podcast-system/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "migration:generate": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:generate -d libs/migrations/ormconfig.ts",
+    "migration:run": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run -d libs/migrations/ormconfig.ts",
+    "migration:revert": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:revert -d libs/migrations/ormconfig.ts"
+  },
   "private": true,
   "dependencies": {
     "@nestjs/common": "^11.0.0",
     "@nestjs/core": "^11.0.0",
     "@nestjs/platform-express": "^11.0.0",
     "axios": "^1.6.0",
+    "pg": "^8.16.2",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.8.0"
+    "rxjs": "^7.8.0",
+    "typeorm": "^0.3.25"
   },
   "devDependencies": {
     "@nestjs/schematics": "^11.0.0",
@@ -26,11 +32,15 @@
     "@swc/helpers": "~0.5.11",
     "@types/node": "~18.16.9",
     "nx": "21.2.1",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
     "tslib": "^2.3.0",
     "typescript": "~5.8.2",
     "webpack-cli": "^5.1.4"
   },
   "workspaces": [
-    "apps/*"
+    "apps/*",
+    "libs/*",
+    "modules/*"
   ]
 }
