@@ -5,10 +5,8 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
-  OneToMany,
 } from 'typeorm';
 import { ProgramType } from '@modules/program/enums/program-type.enum';
-import { ProgramCategory } from '@modules/program/entities/program-category.entity';
 
 @Entity('programs')
 export class Program {
@@ -33,6 +31,15 @@ export class Program {
   @Column({ type: 'timestamp', nullable: true })
   published_at?: Date;
 
+  @Column({
+    type: 'varchar',
+    nullable: true,
+    comment: `⚠️ هذا الحقل بديل مؤقت للتصنيفات.
+      من المفترض أن يكون هناك علاقة Many-to-Many بين البرامج والتصنيفات عبر جدول وسيط (program_categories)،
+      ولكن تم تبسيط هذا الحقل لمرحلة الـ MVP فقط لتسهيل التنفيذ وتسريع التسليم.`,
+  })
+  category?: string;
+
   @CreateDateColumn()
   created_at!: Date;
 
@@ -41,7 +48,4 @@ export class Program {
 
   @DeleteDateColumn()
   deleted_at?: Date;
-
-  @OneToMany(() => ProgramCategory, (link) => link.program)
-  categories!: ProgramCategory[];
 }
