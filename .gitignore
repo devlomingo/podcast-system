@@ -45,3 +45,4 @@ Thumbs.db
 
 .env
 apps/*/.env
+package-lock.json
