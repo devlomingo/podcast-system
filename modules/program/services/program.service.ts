@@ -22,12 +22,13 @@ export class ProgramService {
     const program = this.programRepository.create(data);
     return this.programRepository.save(program);
   }
-
-  update(id: number, data: Partial<Program>) {
-    return this.programRepository.update(id, data);
+  async update(id: number, data: Partial<Program>): Promise<Program> {
+    const existing = await this.programRepository.findOneOrFail({ where: { id } });
+    const updated = this.programRepository.merge(existing, data);
+    return this.programRepository.save(updated);
   }
 
   remove(id: number) {
-    return this.programRepository.delete(id);
+    return this.programRepository.softDelete(id);
   }
 }
