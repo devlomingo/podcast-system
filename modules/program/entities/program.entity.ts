@@ -16,11 +16,18 @@ export class Program {
   @Column({ type: 'enum', enum: ProgramType, comment: 'نوع البرنامج' })
   type!: ProgramType;
 
-  @Column({ type: 'jsonb', comment: 'العنوان متعدد اللغات' })
-  title!: Record<string, string>;
+  @Column({
+    type: 'text',
+    comment: 'العنوان (تم تبسيطه كنص عادي بدلاً من json متعدد اللغات)',
+  })
+  title!: string;
 
-  @Column({ type: 'jsonb', nullable: true, comment: 'الوصف متعدد اللغات' })
-  description?: Record<string, string>;
+  @Column({
+    type: 'text',
+    nullable: true,
+    comment: 'الوصف (تم تبسيطه كنص عادي بدلاً من json متعدد اللغات)',
+  })
+  description?: string;
 
   @Column({ type: 'varchar', nullable: true })
   language?: string;

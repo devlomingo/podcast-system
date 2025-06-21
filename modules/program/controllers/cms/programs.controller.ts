@@ -16,8 +16,10 @@ export class ProgramsController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: number): Promise<Program> {
-    return this.programService.findOne(id);
+  async findOne(@Param('id') id: number): Promise<Program> {
+    const program = await this.programService.findOne(id);
+    const transformed = ProgramPresenter.transform(program);
+    return ResponsePresenter.success(transformed);
   }
 
   @Post()
