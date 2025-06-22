@@ -15,7 +15,7 @@ export class ProgramService {
   }
 
   findOne(id: number): Promise<Program> {
-    return this.programRepository.findOneBy({ id });
+    return this.programRepository.findOneOrFail({ where: { id } });
   }
 
   create(data: Partial<Program>): Promise<Program> {

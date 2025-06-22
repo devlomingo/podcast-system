@@ -1,10 +1,9 @@
-import { Command, CommandRunner, Option } from 'nest-commander';
-import { Injectable } from '@nestjs/common';
+import { Command, CommandRunner } from 'nest-commander';
 
-@Injectable()
-@Command({ name: 'import:programs', description: 'Import programs from sources' })
-export class BasicCommand extends CommandRunner {
-  async run() {
-    console.log('🚀 Running import:programs command...');
+@Command({ name: 'import:programs', description: 'Import programs command' })
+export class ImportProgramsCommand extends CommandRunner {
+  async run(passedParams: string[], options?: Record<string, any>): Promise<void> {
+    console.log('My command executed, yaaaaae!');
+    // Re
   }
 }

@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CMSProgramModule } from '@modules/program/cms-program.module';
+
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -14,6 +15,6 @@ import { CMSProgramModule } from '@modules/program/cms-program.module';
       autoLoadEntities: true,
     }),
     CMSProgramModule,
-  ]
+  ],
 })
 export class AppModule {}
