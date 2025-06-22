@@ -7,28 +7,4 @@ export class ProgramsController {
     console.log('findAll called');
     return 'findAll endpoint';
   }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    console.log('findOne called');
-    return `findOne endpoint with id = ${id}`;
-  }
-
-  @Post()
-  create(@Body() body: any) {
-    console.log('create called');
-    return 'create endpoint';
-  }
-
-  @Put(':id')
-  update(@Param('id') id: string, @Body() body: any) {
-    console.log('update called');
-    return `update endpoint with id = ${id}`;
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    console.log('remove called');
-    return `remove endpoint with id = ${id}`;
-  }
 }
