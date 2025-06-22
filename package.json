@@ -4,9 +4,9 @@
   "license": "MIT",
   "scripts": {
     "command": "",
-    "migration:generate": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:generate -d libs/migrations/ormconfig.ts",
-    "migration:run": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run -d libs/migrations/ormconfig.ts",
-    "migration:revert": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:revert -d libs/migrations/ormconfig.ts"
+    "migration:generate": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:generate -d utils/migrations/ormconfig.ts",
+    "migration:run": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run -d utils/migrations/ormconfig.ts",
+    "migration:revert": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:revert -d utils/migrations/ormconfig.ts"
   },
   "private": true,
   "dependencies": {
@@ -46,7 +46,7 @@
   },
   "workspaces": [
     "apps/*",
-    "libs/*",
+    "utils/*",
     "modules/*"
   ]
 }
